@@ -4,9 +4,7 @@ A live, self-contained scouting board for the 2027 MLB Draft class — 50 prospe
 
 **Live board:** *(add your GitHub Pages link here)*
 
-*(add a screenshot here — `![Board](screenshot.png)`)*
-
-Built and maintained by **Derek Stoetzer** ([BumpDay Analytics](#)) — pitching analytics / run prevention. Trackman operator, Arroyo Seco Saints (California Collegiate League).
+Built and maintained by **Derek Stoetzer**
 
 ## What's in it
 
