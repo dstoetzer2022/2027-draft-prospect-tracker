@@ -4,6 +4,7 @@
 const BOARD_UPDATED = '2026-07-23';
 
 const RAW = [
+  ["Gabriel Lehouillier","1B/OF","Academy of Baseball Canada","QC","HS","hitter"],
 ["Dylan Seward","SS","HS (California)","CA","HS","hitter"],
 ["Grant Westphal","OF","Blue Valley HS","KS","HS","hitter"],
 ["Sebastian Castillo","SS/RHP","Byron Nelson HS","TX","HS","hitter"],
@@ -60,6 +61,16 @@ const RAW = [
 // Prep Baseball Report; paraphrased into original wording, never copied verbatim. Only applies to
 // players with no existing saved edits, so it never overwrites anything already entered by hand.
 const RESEARCH_PATCH = {
+  'Gabriel Lehouillier': {
+    bats:'L', throws:'R', height:'6-1', weight:'208',
+    sources:[
+      {outlet:'Perfect Game', date:'2026', note:'Listed 6-1/211, L/R, 1B/OF, 2027 grad; plays for Academy of Baseball Canada (Levis, QC); detailed grades behind paywall'},
+      {outlet:'FieldLevel', date:'2026', note:'Recruiting profile lists 6-1/205, 1B/LF/RF, Levis QC \u2014 no commit or grades listed'},
+      {outlet:'Prospect Select Baseball', date:'2026', note:'Rostered on Academy of Baseball Canada 2027 team page, Levis, QC'}
+    ]
+    // THIN COVERAGE \u2014 no national ranking, stats, or commit found as of Aug 2026. Blurb/notes left
+    // blank intentionally so he keeps the needs-report flag rather than padding out a write-up.
+  },
   'Chase Fuller': {
     bats:'R', throws:'R', height:'6-3', weight:'205', commit:'Florida State',
     blurb:'Perfect Game\u2019s #1 overall prospect in the 2027 HS class \u2014 explosive two-way athlete with top-of-scale raw power.',

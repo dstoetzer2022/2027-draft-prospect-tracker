@@ -255,6 +255,41 @@ tr.watchlist-row:hover td:first-child{background:#243643;}
 .smbtn.danger{background:transparent;border:1px solid var(--red);color:var(--red);}
 .smbtn.subtle{background:transparent;border:1px solid var(--edge);color:var(--muted);}
 .flatwrap{padding-bottom:20px;}
+.navrow{display:flex;align-items:center;gap:10px;}
+.navrow .navpos{font-size:11px;color:var(--muted);}
+
+/* ── print one-pager ── */
+#printSheet{display:none;}
+@media print{
+  body *{visibility:hidden;}
+  #printSheet, #printSheet *{visibility:visible;}
+  #printSheet{display:block;position:absolute;top:0;left:0;width:100%;padding:24px;font-family:var(--font);color:#111;background:#fff;}
+  .ph-head{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid #0e253a;padding-bottom:10px;margin-bottom:8px;}
+  .ph-name{font-size:22px;font-weight:800;color:#0e253a;}
+  .ph-sub{font-size:12px;color:#444;margin-top:2px;}
+  .ph-ofp{text-align:right;}
+  .ph-ofp-lbl{font-size:10px;letter-spacing:1px;color:#888;text-transform:uppercase;}
+  .ph-ofp-val{font-size:26px;font-weight:800;color:#0e253a;}
+  .ph-risk{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;margin-top:4px;display:inline-block;}
+  .ph-risk.risk-lo{background:#dff5e1;color:#1a7a32;}
+  .ph-risk.risk-mid{background:#fff3d6;color:#8a6100;}
+  .ph-risk.risk-hi{background:#fde0e0;color:#a11f1f;}
+  .ph-bio{font-size:11.5px;color:#555;margin-bottom:10px;}
+  .ph-shelf{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;}
+  .pg-cell{border:1px solid #ccc;border-radius:6px;padding:4px 10px;text-align:center;min-width:44px;}
+  .pg-lbl{font-size:9px;color:#888;text-transform:uppercase;letter-spacing:0.5px;}
+  .pg-val{font-size:15px;font-weight:700;color:#0e253a;}
+  .ph-blurb{font-size:13px;font-style:italic;color:#333;margin-bottom:10px;padding-left:10px;border-left:3px solid #c5b683;}
+  .ph-sw{display:flex;gap:20px;margin-bottom:10px;}
+  .ph-sw>div{flex:1;}
+  .ph-section{margin-bottom:10px;}
+  .ph-row2{display:flex;gap:20px;margin-bottom:10px;}
+  .ph-row2>div{flex:1;}
+  #printSheet h5{font-size:10.5px;text-transform:uppercase;letter-spacing:0.6px;color:#0e253a;margin:0 0 3px;}
+  #printSheet p{font-size:11.5px;line-height:1.45;color:#222;margin:0;}
+  .ph-src{font-size:10.5px;color:#333;margin-bottom:3px;}
+  .ph-footer{margin-top:16px;padding-top:8px;border-top:1px solid #ccc;font-size:9.5px;color:#999;text-align:center;}
+}
 </style>
 </head>
 <body>
@@ -325,7 +360,8 @@ function makeDefault([name,pos,school,state,level,type],id){
       hitter:{hit:50,power:50,run:50,arm:50,field:50},
       pitcher:{fastballVelo:null, secondaries:[], command:50}
     },
-    sources:[], watchlist:false, archived:false, custom:false, lastEdited:null
+    sources:[], watchlist:false, archived:false, custom:false, lastEdited:null,
+    strengths:'', weaknesses:'', risk:''
   };
   const patch = RESEARCH_PATCH[name];
   if(!patch) return base;
@@ -418,6 +454,16 @@ function needsReport(p){
   const g = p.grades.pitcher;
   const unscored = !g.fastballVelo && Number(g.command)===50 && (!g.secondaries || g.secondaries.length===0);
   return unscored && !p.blurb && !p.notes;
+}
+// "Stale" = has real content but hasn't been personally touched (grades/notes edited) in
+// 30+ days, or never at all. Since grades never auto-fill, this is effectively your
+// "needs a fresh look" queue for already-researched players.
+function isStale(p){
+  if(p.archived) return false;
+  if(!p.blurb && !p.notes) return false;
+  if(!p.lastEdited) return true;
+  const days = (Date.now() - new Date(p.lastEdited).getTime()) / 86400000;
+  return days >= 30;
 }
 // Grade-only version of the above, parameterized by role — used in the split tables where a
 // two-way player's row reflects a specific role, not necessarily their primary `type`.
@@ -565,7 +611,7 @@ const REGION_STATES = {
 
 let ui = {
   view:'cards', search:'', position:'ALL', type:'ALL', level:'ALL', cardSort:'level',
-  region:'ALL', state:'ALL', watchlistOnly:false, needsReportOnly:false, showArchived:false, showAddForm:false,
+  region:'ALL', state:'ALL', watchlistOnly:false, needsReportOnly:false, staleOnly:false, showArchived:false, showAddForm:false,
   expandedId:null, compareMode:false, compareSelected:[],
   hitterSortCol:'name', hitterSortDir:'asc', pitcherSortCol:'name', pitcherSortDir:'asc', tableExpanded:{}
 };
@@ -583,6 +629,7 @@ function filtered(){
     if(ui.region!=='ALL' && regionOf(p.state)!==ui.region) return false;
     if(ui.state!=='ALL' && p.state!==ui.state) return false;
     if(ui.watchlistOnly && !p.watchlist) return false;
+    if(ui.staleOnly && !isStale(p)) return false;
     if(ui.needsReportOnly && !needsReport(p)) return false;
     return true;
   });
@@ -638,6 +685,7 @@ function buildShell(){
     </select>
     <div class="togglechip" id="chipWatch" onclick="ui.watchlistOnly=!ui.watchlistOnly;render()">\u2605 Watchlist</div>
     <div class="togglechip" id="chipNeeds" onclick="ui.needsReportOnly=!ui.needsReportOnly;render()">\u2691 Needs Report</div>
+    <div class="togglechip" id="chipStale" onclick="ui.staleOnly=!ui.staleOnly;render()">\u23f3 Stale (30d+)</div>
     <div class="togglechip" id="chipArch" onclick="ui.showArchived=!ui.showArchived;render()">Archived</div>
   `;
 
@@ -661,7 +709,7 @@ function syncShell(){
   sync('fSearch',ui.search); sync('fPos',ui.position); sync('fType',ui.type);
   sync('fLevel',ui.level); sync('fRegion',ui.region); sync('fState',ui.state); sync('fSort',ui.cardSort);
   const chip=(id,on)=>{ const el=document.getElementById(id); if(el) el.classList.toggle('on',on); };
-  chip('chipWatch',ui.watchlistOnly); chip('chipNeeds',ui.needsReportOnly); chip('chipArch',ui.showArchived);
+  chip('chipWatch',ui.watchlistOnly); chip('chipNeeds',ui.needsReportOnly); chip('chipStale',ui.staleOnly); chip('chipArch',ui.showArchived);
   const active = PROSPECTS.filter(p=>!p.archived);
   const archN = PROSPECTS.length - active.length;
   const sb=document.getElementById('statsBar');
@@ -814,6 +862,12 @@ function handSelect(id, field, value, options){
     ${options.map(o=>`<option value="${o}" ${value===o?'selected':''}>${o}</option>`).join('')}
   </select>`;
 }
+function riskSelect(id, current){
+  const opts = ['', 'Low', 'Moderate', 'High'];
+  return `<select onchange="commit(${id},'risk',this.value)">${opts.map(o=>
+    `<option value="${o}" ${current===o?'selected':''}>${o||'Unset'}</option>`).join('')}</select>`;
+}
+function navExpand(id){ if(id==null) return; ui.expandedId=id; render(); const el=document.querySelector(`[data-card-id="${id}"]`); if(el && el.scrollIntoView) el.scrollIntoView({block:'start',behavior:'smooth'}); }
 function hitterGradePanel(p){
   return `
     <div class="panel">
@@ -848,8 +902,18 @@ function pitcherGradePanel(p){
 }
 function expandHTML(p){
   const rls = roles(p);
+  const list = filtered();
+  const idx = list.findIndex(x=>x.id===p.id);
+  const prevId = idx>0 ? list[idx-1].id : null;
+  const nextId = (idx>=0 && idx<list.length-1) ? list[idx+1].id : null;
   return `
   <div class="expand">
+    <div class="panel navrow">
+      <button class="smbtn subtle" ${prevId==null?'disabled':''} onclick="event.stopPropagation();navExpand(${prevId})">\u2190 Prev</button>
+      <span class="navpos">${idx+1} of ${list.length}</span>
+      <button class="smbtn subtle" ${nextId==null?'disabled':''} onclick="event.stopPropagation();navExpand(${nextId})">Next \u2192</button>
+      <button class="smbtn" style="margin-left:auto" onclick="event.stopPropagation();printOnePager(${p.id})">\ud83d\uddb6 Print One-Pager</button>
+    </div>
     <div class="panel">
       <h4>Identity & Background</h4>
       <div class="fieldgrid">
@@ -866,8 +930,13 @@ function expandHTML(p){
       <h4>Scouting Report</h4>
       <div class="field blurbfield" style="margin-bottom:8px"><label>Blurb (one line, shown on the card)</label><textarea onblur="commit(${p.id},'blurb',this.value)">${p.blurb}</textarea></div>
       <div class="field notesfield"><label>Full Notes</label><textarea onblur="commit(${p.id},'notes',this.value)">${p.notes}</textarea></div>
+      <div class="fieldgrid" style="margin-top:10px">
+        <div class="field"><label>Strengths</label><textarea placeholder="e.g. Plus bat speed, advanced zone control, clean SS actions" onblur="commit(${p.id},'strengths',this.value)">${p.strengths}</textarea></div>
+        <div class="field"><label>Weaknesses</label><textarea placeholder="e.g. Long swing vs. velo, arm strength below-average for the position" onblur="commit(${p.id},'weaknesses',this.value)">${p.weaknesses}</textarea></div>
+      </div>
       <div class="subfields">
         <div class="fieldgrid">
+          <div class="field"><label>Risk</label>${riskSelect(p.id,p.risk)}</div>
           <div class="field"><label>Injury History</label><input value="${p.injury}" onblur="commit(${p.id},'injury',this.value)"></div>
           <div class="field"><label>MLB Comp</label><input value="${p.comp}" onblur="commit(${p.id},'comp',this.value)"></div>
         </div>
@@ -1200,6 +1269,51 @@ function renderCompare(main,list){
   main.innerHTML = html;
 }
 
+/* ── print one-pager ── */
+function riskChipClass(r){ return r==='High'?'risk-hi':r==='Moderate'?'risk-mid':r==='Low'?'risk-lo':''; }
+function printOnePager(id){
+  const p = PROSPECTS.find(x=>x.id===id);
+  if(!p) return;
+  const rls = roles(p);
+  const shelfHitter = HITTER_GRADES.map(k=>`<div class="pg-cell"><div class="pg-lbl">${GRADE_ABBR[k]}</div><div class="pg-val">${p.grades.hitter[k]}</div></div>`).join('');
+  const shelfPitcher = `<div class="pg-cell"><div class="pg-lbl">FB</div><div class="pg-val">${gradeFromVelo(p.grades.pitcher.fastballVelo)}${p.grades.pitcher.fastballVelo?` (${p.grades.pitcher.fastballVelo})`:''}</div></div>`
+    + (p.grades.pitcher.secondaries||[]).map(s=>`<div class="pg-cell"><div class="pg-lbl">${PITCH_ABBR[s.type]||s.type}</div><div class="pg-val">${s.grade}</div></div>`).join('')
+    + `<div class="pg-cell"><div class="pg-lbl">Cmd</div><div class="pg-val">${p.grades.pitcher.command}</div></div>`;
+  const school = logoSchoolFor(p);
+  const sheet = `
+    <div class="ph-head">
+      <div>
+        <div class="ph-name">${p.name}</div>
+        <div class="ph-sub">${p.pos}${isTwoWay(p)?' / Two-Way':''} \u00b7 ${school} \u00b7 ${p.state} \u00b7 ${p.level}${p.commit?' \u00b7 '+p.commit:''}</div>
+      </div>
+      <div class="ph-ofp">
+        <div class="ph-ofp-lbl">OFP</div>
+        <div class="ph-ofp-val">${ofp(p)}</div>
+        ${p.risk?`<div class="ph-risk ${riskChipClass(p.risk)}">${p.risk} Risk</div>`:''}
+      </div>
+    </div>
+    <div class="ph-bio">${p.bats||'\u2014'}/${p.throws||'\u2014'} \u00b7 ${p.height||'\u2014'} \u00b7 ${p.weight||'\u2014'} lb${p.classYear?' \u00b7 Class of '+p.classYear:''}${p.personalRank?' \u00b7 Personal Rank #'+p.personalRank:''}</div>
+    <div class="ph-shelf">${rls.includes('hitter')?shelfHitter:''}${rls.includes('pitcher')?shelfPitcher:''}</div>
+    ${p.blurb?`<div class="ph-blurb">${p.blurb}</div>`:''}
+    ${p.strengths||p.weaknesses ? `<div class="ph-sw">
+      ${p.strengths?`<div><h5>Strengths</h5><p>${p.strengths}</p></div>`:''}
+      ${p.weaknesses?`<div><h5>Weaknesses</h5><p>${p.weaknesses}</p></div>`:''}
+    </div>` : ''}
+    ${p.notes?`<div class="ph-section"><h5>Notes</h5><p>${p.notes}</p></div>`:''}
+    <div class="ph-row2">
+      ${p.comp?`<div><h5>MLB Comp</h5><p>${p.comp}</p></div>`:''}
+      ${p.injury?`<div><h5>Injury History</h5><p>${p.injury}</p></div>`:''}
+      ${p.statline?`<div><h5>Statline</h5><p>${p.statline}</p></div>`:''}
+    </div>
+    ${p.sources.length?`<div class="ph-section"><h5>Sources</h5>${p.sources.map(s=>`<div class="ph-src"><b>${s.outlet}</b> (${s.date}) \u2014 ${s.note}</div>`).join('')}</div>`:''}
+    <div class="ph-footer">BumpDay Analytics \u00b7 Scouted by Derek Stoetzer \u00b7 Generated ${new Date().toISOString().slice(0,10)}</div>
+  `;
+  let el = document.getElementById('printSheet');
+  if(!el){ el = document.createElement('div'); el.id='printSheet'; document.body.appendChild(el); }
+  el.innerHTML = sheet;
+  window.print();
+}
+
 /* ── data tools: csv / json backup / publish / add / archive ── */
 function downloadText(text, filename, mime){
   const blob=new Blob([text],{type:mime||'text/plain'});
@@ -1216,7 +1330,7 @@ function csvSafe(v){
 }
 function exportCSV(onlyFiltered){
   const list = onlyFiltered ? filtered() : PROSPECTS;
-  const cols=['name','pos','school','state','level','type','two_way','class_year','bats','throws','height','weight','commit','personal_rank','watchlist','archived','custom','ofp','hit','power','run','arm','field','fb_velo','fb_grade','command','secondaries','projection','comp','statline','injury','blurb','notes','sources','last_edited'];
+  const cols=['name','pos','school','state','level','type','two_way','class_year','bats','throws','height','weight','commit','personal_rank','watchlist','archived','custom','ofp','hit','power','run','arm','field','fb_velo','fb_grade','command','secondaries','projection','comp','statline','injury','blurb','notes','strengths','weaknesses','risk','sources','last_edited'];
   const rows=[cols.join(',')];
   list.forEach(p=>{
     const h=p.grades.hitter, pg=p.grades.pitcher;
@@ -1228,6 +1342,7 @@ function exportCSV(onlyFiltered){
       pg.fastballVelo??'',gradeFromVelo(pg.fastballVelo),pg.command,
       (pg.secondaries||[]).map(s=>`${PITCH_ABBR[s.type]||s.type} ${s.grade}`).join('; '),
       p.projection,p.comp,p.statline,p.injury,p.blurb,p.notes,
+      p.strengths,p.weaknesses,p.risk,
       (p.sources||[]).map(s=>`${s.outlet} (${s.date}): ${s.note}`).join(' | '),
       p.lastEdited||''
     ];
