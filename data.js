@@ -289,6 +289,10 @@ const RESEARCH_PATCH = {
     ]
   },
   'Dylan Seward': {
+    outletGrades:[
+      {id:1, tool:'run', outlet:'Baseball America', grade:80, date:'2026-08-03'},
+      {id:2, tool:'run', outlet:'Overslot Baseball', grade:70, date:'2026-08-03'}
+    ],
     school:'Norco High School',
     bats:'S', throws:'R', height:'6-0', weight:'175', commit:'Tennessee',
     blurb:'The consensus #1 overall prospect in the 2027 class \u2014 switch-hitting shortstop with top-of-the-scale speed and advanced actions.',
