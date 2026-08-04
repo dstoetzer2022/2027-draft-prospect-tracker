@@ -1,7 +1,7 @@
 // data.js — 2027 MLB Draft Prospect Tracker board data
 // Weekly update flow: open index.html, do your scouting, click "Publish data.js",
 // then replace this file with the downloaded one and commit.
-const BOARD_UPDATED = '2026-07-23';
+const BOARD_UPDATED = '2026-08-03';
 
 const RAW = [
   ["Gabriel Lehouillier","1B/OF","Academy of Baseball Canada","QC","HS","hitter"],
