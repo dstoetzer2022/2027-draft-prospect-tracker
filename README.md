@@ -1,6 +1,6 @@
 # 2027 MLB Draft Prospect Tracker
 
-A live, self-contained scouting board for the 2027 MLB Draft class — 50 prospects (17 HS, 33 college) tracked across Cards, Big Board, Map, and Compare views, with 20–80 grades, pitch-level evaluations, and sourced scouting notes. Updated weekly.
+A live, self-contained scouting board for the 2027 MLB Draft class — 24 active prospects (18 college, 6 HS — pitcher-majority board) tracked, with an archived bench of additional profiles across Cards, Big Board, Map, and Compare views, with 20–80 grades, pitch-level evaluations, and sourced scouting notes. Updated weekly.
 
 **Live board:** *(add your GitHub Pages link here)*
 

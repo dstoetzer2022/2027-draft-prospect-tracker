@@ -62,6 +62,7 @@ const RAW = [
 // players with no existing saved edits, so it never overwrites anything already entered by hand.
 const RESEARCH_PATCH = {
   'Gabriel Lehouillier': {
+    archived:true,
     bats:'L', throws:'R', height:'6-1', weight:'208',
     sources:[
       {outlet:'Perfect Game', date:'2026', note:'Listed 6-1/211, L/R, 1B/OF, 2027 grad; plays for Academy of Baseball Canada (Levis, QC); detailed grades behind paywall'},
@@ -81,6 +82,7 @@ const RESEARCH_PATCH = {
     ]
   },
   'Lubin Rincon': {
+    archived:true,
     bats:'L', height:'6-3', weight:'170', commit:'Texas',
     blurb:'Texas\u2019 #1-ranked in-state recruit for 2027 \u2014 a hit-over-power shortstop with a plus glove and a wiry frame that projects to add strength.',
     notes:'From Pearland, Texas (Shadow Creek HS). Ranked the No. 1 player in the state of Texas for the 2027 class. Prep Baseball Report grades him as a plus future defender at shortstop with solid arm strength, and a hit-over-power approach at the plate with mechanics evaluators like (70.2 mph bat speed, 95 mph max exit velocity, 355-foot max distance as an underclassman). MLB.com\u2019s early mock draft calls him a "wiry" lefty bat with excellent contact skills and more raw pull-side pop than his frame suggests. Committed to Texas.',
@@ -90,6 +92,7 @@ const RESEARCH_PATCH = {
     ]
   },
   'Bub Terrell': {
+    archived:true,
     bats:'L', throws:'L', height:'6-3', weight:'230',
     blurb:'Auburn outfielder (real name D\u2019Marion) who turned down pro ball in 2024 \u2014 solid freshman debut with power still to unlock.',
     notes:'Drafted in the 19th round of the 2024 draft by the Blue Jays out of Thompson HS but chose Auburn instead. Split time between first base and the outfield in his first two seasons on campus. Hit .300 as a freshman, though pitch-recognition issues limited how often he got to his raw power. Auburn\u2019s coaching staff has flagged him as one of several key 2027-draft-eligible Tigers to watch (alongside Chase Fralick and others). One outlet has floated him as a potential first-round talent if the power translates more consistently in 2026-27.',
@@ -125,6 +128,7 @@ const RESEARCH_PATCH = {
     ]
   },
   'Brodie Johnston': {
+    archived:true,
     bats:'R', throws:'R',
     blurb:'Former #1-ranked Tennessee HS prospect who turned down the 2024 draft to play at Vanderbilt.',
     notes:'Note: the correct spelling of his surname is Johnston (some earlier sources/sheets had it as "Johnson"). From Ooltewah, TN (Boyd-Buchanan School) \u2014 hit .523 with 8 HR, 46 RBI and 18 doubles as a senior, was named a MaxPreps All-American and ranked the #1 overall prep prospect in Tennessee for the 2024 draft, but withdrew his name to honor his Vanderbilt commitment. Played summer ball in the Appalachian League for the Greeneville Flyboys (.284, 5 HR) after graduating. Appears in multiple 2027 mock drafts as a projected first-round talent at third base.',
@@ -134,6 +138,7 @@ const RESEARCH_PATCH = {
     ]
   },
   'Jake Hanley': {
+    archived:true,
     bats:'L', throws:'R', height:'6-6', weight:'241',
     blurb:'Massive power-bat first baseman \u2014 double-plus raw power potential with real questions about hit tool and contact.',
     notes:'From Toledo, Ohio (Mason HS), where he was Ohio\u2019s 2024 State Player of the Year as a two-way star: .384 with 5 HR at the plate, and 9-1/1.79 ERA/87 K in 58.2 IP on the mound. At 6-6/241 with big bat speed, evaluators see a chance for double-plus power at maturity, but a pull-heavy, hit-tool-limited approach and well-below-average speed likely lock him into first base as a pro. Has also pitched (low-90s FB, up to 94-95, average curveball) but profiles primarily as a power lefty bat at Indiana. Recent in-season college performance data was thin in this search pass \u2014 worth a follow-up once more current Indiana stats are available.',
@@ -153,6 +158,7 @@ const RESEARCH_PATCH = {
     ]
   },
   'Noah Franco': {
+    archived:true,
     bats:'L', throws:'L', height:'6-3', weight:'190',
     blurb:'Physical two-way threat at TCU \u2014 huge raw power and a low-90s fastball, but an aggressive approach that comes with swing-and-miss.',
     notes:'A California native who played at IMG Academy and was a top-100 prospect in the 2025 HS class before reclassifying to 2024 and honoring his TCU commitment instead of signing. Preseason First-Team All-American as a two-way player entering 2026. As a freshman (2025): 56 games played, 11 HR as a position player, 12.1 IP pitching. Ranked 12th on Baseball America\u2019s 2027 college board. Scouting take: huge physicality and raw power, but a hyper-aggressive, long swing that leads to real strikeout risk (went 0-for-10 with 8 K in one documented stretch) even amid loud exit velocities (multiple 97+ mph batted balls, some 101+, in his 2026 season opener vs. Vanderbilt). On the mound: low-90s fastball up to 94, high-spin slider, developing changeup.',
@@ -162,6 +168,7 @@ const RESEARCH_PATCH = {
     ]
   },
   'Ryan McPherson': {
+    archived:true,
     injury:'Missed extended time in 2026 with a forearm injury; made his third start back from the injury in the Starkville Regional final on May 31, 2026.',
     blurb:'Mississippi State weekend starter who returned from a forearm injury in time for a deep NCAA Tournament run.',
     notes:'From Hollywood, Florida (North Broward Prep). One of Mississippi State\u2019s three weekend starting pitchers alongside Tomas Valincius and Duke Stone, none of whom were 2026-draft-eligible \u2014 a big part of why evaluators like the Bulldogs\u2019 rotation depth heading into 2027. Missed time with a forearm injury during the 2026 season before returning to start the Starkville Regional final. Specific 2026 statistical detail was limited in this search pass and would benefit from a follow-up once fuller box scores are available.',
@@ -171,6 +178,7 @@ const RESEARCH_PATCH = {
     ]
   },
   'James Nunnallee': {
+    archived:true,
     school:'TCU (transferred from Mississippi State)',
     blurb:'Modest 2026 season at Mississippi State led to a transfer portal move to TCU \u2014 lost his starting job partway through the year.',
     notes:'Originally transferred to Mississippi State from Virginia and opened 2026 as the starting right fielder, but was later replaced in the lineup by Jacob Parker and finished the year hitting just .241 with 1 HR, 5 RBI and 11 runs in a part-time role. Entered the transfer portal on June 9, 2026 and committed to TCU for 2027. Worth noting this is a real step back from a hyped recruiting profile (was a 2024 MLB Draft-covered HS outfielder out of Lightridge HS) \u2014 the college performance so far hasn\u2019t matched the earlier hype, and he\u2019ll need a bounce-back year at a new program to stay on 2027 boards.',
@@ -233,6 +241,7 @@ const RESEARCH_PATCH = {
     ]
   },
   'Chase Fralick': {
+    archived:true,
     bats:'L', height:'6-2',
     blurb:'Power-hitting Auburn catcher \u2014 20-homer sophomore season with a chance to be the class\u2019s top backstop.',
     notes:'Stepped into Auburn\u2019s primary catching role as a freshman in 2025 after a fractured scapula pushed eventual first-rounder Ike Irish to the outfield, and hit .335/.426/.472 with 17 doubles, 4 HR and 41 RBI in the role. Broke out as a sophomore in 2026 with a 20-home-run season and a 1.069 OPS from the left side, with plenty of arm strength behind the plate. Evaluators see a first-round bat whose defensive development (receiving specifically) will determine whether he holds down the top catcher spot in the 2027 class or profiles more as a bat-first mover to third base.',
@@ -242,6 +251,7 @@ const RESEARCH_PATCH = {
     ]
   },
   'Adrian Rodriguez': {
+    archived:true,
     blurb:'Promising Texas freshman infielder with bat-to-ball skills and power upside, still working through early strikeout issues.',
     notes:'Coverage on Rodriguez is thinner than most of this board so far \u2014 Three Quarter Slot\u2019s freshman-year report flagged solid bat-to-ball feel and power potential alongside early strikeout concerns and defensive versatility across the infield/outfield. Appears on Perfect Game\u2019s early 2027 mock draft board (MLB Pipeline had him going 20th overall to Cleveland). Worth a deeper follow-up once more 2026 in-season data is available.',
     sources:[
@@ -290,6 +300,7 @@ const RESEARCH_PATCH = {
     ]
   },
   'Grant Westphal': {
+    archived:true,
     bats:'L', throws:'R', height:'6-1', weight:'205', commit:'Texas',
     blurb:'Five-tool projection from Kansas \u2014 loud lefty contact with a chance to stick in center field.',
     notes:'Baseball America credits a lean, athletic frame with more room to fill out, fast bat speed, and pull-side power upside toward a 20-plus home run threat down the line, plus plus speed that should keep him in center field. Ranked the No. 1 outfielder in Kansas\u2019 2027 class by Prep Baseball Report. Strong summer 2026 showing: 17 extra-base hits (9 doubles, 6 triples, 2 HR) and a 1.324 OPS. Committed to Texas.',
@@ -362,6 +373,7 @@ const RESEARCH_PATCH = {
 // sites, D1Baseball, Baseball America, USA Baseball, PBR, and local/beat coverage; paraphrased
 // into original wording, never copied. Grades/velo/secondaries/rank untouched per standing rule.
   "Levi Clark": {
+    archived:true,
     bats:"R", throws:"R", height:"6-1", weight:"211",
     blurb:"Tennessee power bat who caught fire in SEC play as a sophomore — back in Knoxville for 2027, with his defensive home (C vs. 1B) the open question.",
     notes:"Started 54 of 55 games as a sophomore in 2026, hitting .242 with 13 homers, 13 doubles and a .352 OBP — modest surface line, but he was one of the SEC’s most dangerous hitters in conference play, pacing the Vols in slugging (.646) and tying for the team lead in league homers (9). The catch: Tennessee used him far more at first base (38 starts) than behind the plate (16), so whether he profiles as a catcher or a right-right first baseman is the central evaluation question. Announced in June 2026 he’s returning for his junior year rather than transferring, joining a crowded Vols catching room (Lawless, Grindlinger). D1Baseball included him in its early Top 100 college prospects for the 2027 draft; a 2025 Perfect Game Freshman All-American out of Walton HS (GA), where PBR liked the prototype catcher frame, arm strength and power projection. Two-year career line: .261, 23 HR, 78 RBI.",
@@ -384,6 +396,7 @@ const RESEARCH_PATCH = {
     ]
   },
   "Hogan Denny": {
+    archived:true,
     bats:"R", throws:"R", blurb:"Indiana’s do-everything bat — .357 with 14 HR while starting at five positions, then made the USA Collegiate National Team.", notes:"Breakout 2026 sophomore year on a down Indiana team: .357/.452/.647 with 74 hits, 63 runs, 18 doubles, 14 homers and 44 RBIs, walking plus getting plunked more times (38) than he struck out (32) and going 11-for-14 on the bases. First IU player since at least 2005 to start games at five different positions in one season (RF 30, C 14, 3B 3, LF 3, DH 1) — listed as a catcher but currently more outfielder than backstop, which is the profile question to resolve. First Team All-Big Ten (as an OF), then earned a spot on the final 2026 USA Baseball Collegiate National Team roster — just the seventh Hoosier ever. Missed three games in April with an injury but otherwise started every game he played. Mooresville, IN product; PBR’s prep coverage flagged premium bat speed with a 103 mph max exit velocity.",
     sources:[
       {outlet:"Indiana Athletics", date:"Jun 2026", note:".357 with 74 H, 63 R, 18 2B, 14 HR, 44 RBI, .452 OBP; started at five positions (RF 30, C 14); First Team All-Big Ten"},
@@ -393,6 +406,7 @@ const RESEARCH_PATCH = {
     ]
   },
   "Ethan Surowiec": {
+    archived:true,
     height:"6-1", weight:"220", blurb:"Ole Miss afterthought turned Florida’s leading hitter — physical corner bat who was the only Gator over .300 in SEC play, now back for 2027.", notes:"One of the better transfer-development stories in the class. Barely played as an Ole Miss freshman in 2025 (16 at-bats), then obliterated the Northwoods League — .387 with 17 homers in 53 games, league MVP — and parlayed it into a starting corner job at Florida. As a 2026 draft-eligible sophomore he hit .317/.409/.528 and led the Gators in hits (78), average, RBIs (63) and total bases (130) with 12 homers, and was even better against SEC pitching (.339/.414/.556, the only Florida regular above .300 in league play). Split time between third (34 starts) and first (28 starts); Baseball America’s earlier profile noted plus raw power and bat speed with an aggressive, swing-and-miss-prone approach, and an above-average arm that gives him a chance to stay at third. Went undrafted-by-choice territory in 2026 — announced he’s returning to Florida for his junior year. Gulfport, MS native who models his game on Austin Riley.",
     sources:[
       {outlet:"Gator Country", date:"Jul 2026", note:"Returning for junior season; .317/.409/.528, team leader in hits/AVG/RBI/TB; only Gator over .300 in SEC play; 34 starts at 3B, 28 at 1B"},
@@ -413,6 +427,7 @@ const RESEARCH_PATCH = {
     ]
   },
   "Max Luzarraga": {
+    archived:true,
     bats:"R", throws:"R", height:"6-2", weight:"240",
     blurb:"DBU freshman bullpen piece who quietly led the staff — team-best 2.91 ERA and 1.02 WHIP out of relief on a rough Patriots pitching year.",
     notes:"Thin national coverage so far, but the freshman year was real: 14 relief appearances, 21.2 innings, and a 2.91 ERA / 1.02 WHIP that led all DBU relievers — on a staff that posted a 6.36 ERA overall — including a 1.15 ERA and 0.83 WHIP over his final ten outings and a win at then-ranked Liberty in April. The prep scouting book (PBR North Carolina): strike-thrower with a quality 12-6 curveball he spins around 2,400-2,500 rpm, a fading changeup, and a fastball that was 89-92 touching 93 in 2024 — command-and-spin profile more than raw arm strength, so velocity gains are the swing factor. Weddington HS (Matthews, NC) product, PBR’s #8 RHP in the state’s 2025 class. No published 20-80 evaluations from national outlets yet — needs in-person or Trackman looks before grading.",
@@ -424,6 +439,7 @@ const RESEARCH_PATCH = {
     ]
   },
   "Bradley Zayac": {
+    archived:true,
     bats:"R", throws:"R", height:"6-3", weight:"215",
     blurb:"ECU transfer who immediately became Liberty’s win machine — 9-1 with a 3.64 ERA, CUSA wins leader and a National Pitcher of the Year semifinalist.",
     notes:"Transferred from East Carolina after his 2025 freshman year (he started ECU’s Conway Regional game against Coastal Carolina before entering the portal) and turned in a rock-steady 2026 for a 43-21 Liberty club that reached the Athens Regional: 9-1 with a 3.64 ERA over 84 innings (16 appearances, 15 starts), 68 strikeouts against just 17 walks, and a Conference USA-leading win total. Named CUSA All-Conference Second Team and one of 43 semifinalists for the National Pitcher of the Year Award. The statistical shape is pitchability over power — sub-2.0 BB/9 control, modest strikeout rate (~7.3 K/9) — a durable strike-throwing weekend starter whose draft ceiling likely depends on how the raw stuff grades in person. Chesapeake, VA native; also a repeat CUSA academic honoree with a 3.5+ GPA.",
@@ -435,6 +451,7 @@ const RESEARCH_PATCH = {
     ]
   },
   "Nate Taylor": {
+    archived:true,
     bats:"R", throws:"R", height:"6-2", weight:"222",
     blurb:"Georgia-to-Vanderbilt transfer with a strong arm and a rough first year in black and gold — the 2027 bet is on the stuff, not the 2026 line.",
     notes:"Transferred from Georgia to Vanderbilt for 2026 after a sparkling but tiny freshman sample in Athens — 1.08 ERA, 17 strikeouts and a .107 opponent average in 8.1 relief innings across nine appearances. The first Vandy season was bumpy: roughly 1-4 with an ERA near 9 and 35 strikeouts per D1Baseball’s season page, though it opened promisingly with a 4.1-inning, seven-strikeout start against Oklahoma State at Globe Life Field in February. Baseball America’s preseason Vanderbilt preview grouped him with Nye, Fennell, Guth and Green as returning arms with the raw stuff Vanderbilt’s staff traditionally develops, and Tim Corbin describes him as a strong-armed, durable strike thrower. Buford HS (GA) product. Classic buy-low 2027 follow: SEC-caliber arm talent, results pending — worth a live look before putting numbers on him.",
@@ -460,6 +477,7 @@ const RESEARCH_PATCH = {
     ]
   },
   "Graham Houston": {
+    archived:true,
     bats:"S", throws:"R", height:"5-11", weight:"175", commit:"LSU",
     blurb:"Switch-hitting SS with elite bat-to-ball feel and a potentially elite glove — Marek Houston’s younger brother, and evaluators say further along at the same age. LSU commit.",
     notes:"Younger brother of Marek Houston, the Wake Forest shortstop Minnesota took in the first round in 2025 — and Overslot argues Graham is the more finished product at the same stage. Switch-hitter with a simple, controlled swing and plus bat-to-ball from both sides: more of a slashing, gap-to-gap hack lefty, more loft and bat speed with fence-clearing ability righty. Baseball America highlights the balanced swing (especially advanced as a lefty), aggressive approach with bat control, and clean, rangy shortstop actions. PBR’s June 2026 National Program Invitational primer slotted him #3 nationally, calling the glove potentially elite and noting his production outpaced his first-round brother’s at the same age, with strength gains still to come on the 5-11 frame. Committed to LSU in October 2025. Fall 2025 Trackman/showcase data: 99.9 max EV, 87.3 average, 6.67 in the 60. Plays for Venice (FL), a perennial national-top-5 program. Bleacher Report’s July 2026 mock had him 13th overall.",
@@ -492,6 +510,7 @@ const RESEARCH_PATCH = {
     ]
   },
   "Leo Nockley": {
+    archived:true,
     bats:"L", throws:"R", height:"5-8", weight:"160", commit:"Tennessee",
     blurb:"Undersized, ultra-advanced lefty-hitting SS — top-25 national prospect whose barrel feel and glove keep outplaying the frame. Tennessee commit.",
     notes:"The classic “bet on the skills” profile. At 5-8/160 he was still one of the rare underclassmen invited to both East Coast Pro and the Area Code Games upperclass teams, and Baseball America calls him one of the most advanced hitters in the class — a tight, balanced, efficient left-handed swing that produces surprising impact (100 mph max EV; his 95.8 mph average exit velocity led PBR’s 2027 summer Trackman sample). Instinctive shortstop with quick feet, soft hands, a fast release and a good internal clock; a tick-above-average runner who projects to stay in the middle infield. Ranked #21 nationally / #8 SS / #2 in Pennsylvania by PBR and #35 / #10 SS by Perfect Game when he committed to Tennessee in October 2025 (part of the Vols’ stacked 2027 class alongside Dylan Seward). Backed it up as a junior in spring 2026: PSBCA Class 2A All-State first team, hitting .408 with 3 homers, 7 doubles and a team-high 37 runs while leading Wyoming Seminary to its first-ever District 2 title.",
@@ -503,6 +522,7 @@ const RESEARCH_PATCH = {
     ]
   },
   "Caden Borcherding": {
+    archived:true,
     bats:"R", throws:"R", height:"6-1", weight:"180", commit:"Clemson",
     blurb:"One of the class’s top catchers — athletic, flexible receiver with a projectable bat off a Georgia state-title program. Clemson commit.",
     notes:"Top-5 catcher in the class by most boards. PBR ranked him #5 nationally in September 2025; Overslot had him #51 overall and top-5 behind the plate; Perfect Game grades him 9.5 and he’s Georgia’s #2 prospect. Committed to Clemson in September 2025 right after an official visit, choosing the Tigers over heavyweight interest. The defense leads: PG describes a loose, fluid receiver who works out of multiple stances with lower-half flexibility, soft hands, smooth transfers and a quick, accurate release (pop times around 1.98–2.10 with arm strength still coming — BA projects at least an average arm as the lean 6-1 frame fills out, and notes he’s one of the youngest players in the class). The bat is projectable more than loud right now: rhythmic right-handed swing, mostly middle-of-the-field contact with growing pull-side lift; 94-95 max EVs in workouts, and a .474 line with two homers at a summer 2025 Hoover tournament. Helped Etowah to a Georgia state title in 2024 (34-4). Three-time PG Select Fest honoree.",
@@ -514,6 +534,7 @@ const RESEARCH_PATCH = {
     ]
   },
   "Anderson Lambert": {
+    archived:true,
     bats:"R", throws:"R", height:"6-0", weight:"170", commit:"Alabama",
     blurb:"Maryland’s #1 player and a top-10 national name — twitchy two-way OF with fast hands at the plate and an 88 mph fastball in reserve. Alabama commit.",
     notes:"PBR’s #6 overall player nationally in September 2025 and the top-ranked player in Maryland. Committed to Alabama in November 2025. Ultra-athletic 6-0/170 build with the kind of twitch and fluidity PBR’s Mid-Atlantic staff called tough to match at his age. At the plate: balanced base, high hand load, fast hands and easy bat speed, working gap-to-gap with opposite-field pop already showing and power projected to climb as the frame fills. Primary outfielder — easy, athletic routes with a loose arm, quick release and accurate carry (Perfect Game notes he’s athletic enough to develop on the infield but his present actions are clearly better on grass; some outlets list him at 3B/CF). Also a real mound option: T88 fastball with feel for a breaking ball and changeup, though the OF bat is the pro profile. Doubled and singled at 95 mph EV at the 2025 Area Code Games. Laurel, MD / McDonogh School product.",
@@ -525,6 +546,7 @@ const RESEARCH_PATCH = {
     ]
   },
   "Ely Mason": {
+    archived:true,
     bats:"L", throws:"R", height:"6-2", weight:"175", commit:"Oklahoma State",
     blurb:"Twitchy lefty-hitting utility athlete (SS/CF/3B) — California’s #2 in the class, with a 7-RBI playoff explosion in 2026. Oklahoma State commit.",
     notes:"Full name Elyjah Mason. One of the most athletic prospects in the country per PBR, who ranks him #2 in California’s 2027 class and #12 nationally (June 2026, up from #7 nationally in the September 2025 board). Committed to Oklahoma State. The athleticism is verified: his 6.66 sixty was the fastest time at the 2025 Future Games tryouts, on a lengthy 6-2 frame with a long lower half and clear strength projection. Left-handed hitter with a relaxed, quiet load, whip in the barrel and a lift-oriented path — the June 2026 playoff performance at 24-4 Temecula Valley (3-for-5, 7 RBI, capped by a towering three-run homer to right) made PBR’s top single-game performances of the CIF season. Genuine multi-position piece who lines up at shortstop, center field and third base; PBR notes athletic dirt actions with fast hands at third. Huntington Beach teammate of UCLA-committed SS Parker Leoff on one of California’s marquee programs.",
@@ -536,6 +558,7 @@ const RESEARCH_PATCH = {
     ]
   },
   "Hank Rippy": {
+    archived:true,
     bats:"L", throws:"R", height:"6-2", weight:"185", commit:"Texas",
     blurb:"Wiry lefty-swinging SS with 104+ mph exit velos and one of the biggest stock jumps in the class — now at Austin Anderson after transferring. Texas commit.",
     notes:"ROSTER NOTE: transferred from Hyde Park Baptist to Anderson HS (Austin) ahead of the 2026 season, joining a loaded Central Texas program alongside A&M signee Connor Comeau. Committed to Texas in September 2025. PBR moved him into the national top 10 (#8, September 2025) after a summer where his loose left-handed stroke produced BP exit velocities over 104 mph — verified Trackman: 104.6 max, 96.3 average, 90% hard-hit rate at the June 2025 Future Games tryout, huge numbers for a wiry 6-2/185 frame with obvious strength still to come. PBR’s director’s notes: natural barrel accuracy with a relaxed approach, real present impact, and a defensive profile with soft hands, skilled glovework and a strong arm with carry — a charging backhand glove-to-hand play was the highlight that rounded out the report. Austin-area product; part of what area coverage calls arguably the best left side of the infield in Central Texas.",
@@ -547,6 +570,7 @@ const RESEARCH_PATCH = {
     ]
   },
   "Selvin Garrett": {
+    archived:true,
     bats:"R", throws:"R", height:"5-11", weight:"170", commit:"Texas",
     blurb:"“A wizard at shortstop” — compact, athletic top-10 national talent who hit .412 as a 2026 junior. Texas commit.",
     notes:"Broke out at the 2025 Future Games — a massive week at the plate including a homer, plus standout defense — and PBR responded by jumping him from #23 to #10 in Texas and onto the national top 10 (#10 overall, September 2025). Committed to Texas. The 2026 junior season validated it: .412 with a .471 OBP and 36 runs for a Buda Johnson club that reached the Class 6A Division I regional finals, with Austin-area coverage flatly calling him “a wizard at shortstop.” Compact, athletic 5-11/170 build; PBR’s book is real bat speed pointing to a higher offensive ceiling than the frame suggests, with solid present defense and strength gains to come. Still hitting on the summer 2026 circuit — homered at the AABC Don Mattingly World Series in July. Plays for Moe & Gene Johnson HS (Buda, TX); travels with Canes Southwest.",
@@ -558,6 +582,7 @@ const RESEARCH_PATCH = {
     ]
   },
   "Cameron Aguilar": {
+    archived:true,
     bats:"R", throws:"R", height:"5-10", weight:"170",
     blurb:"Uncommitted New England OF/RHP two-way — leadoff feel, plus base instincts and a 90 mph outfield arm; regional-level coverage so far.",
     notes:"Honest read: coverage is regional (PBR Massachusetts) rather than national, so this is a thinner file than the rest of the batch — but the reports are consistently positive. Right-handed-hitting outfielder from St. Mark’s School (Southborough, MA) who also pitches; played center field for Team Massachusetts at the PBR Future Games, where the squad went 3-0. PBR’s evaluations: leadoff profile with a good feel for the strike zone, above-average base-running instincts, loose clean hands with power potential in the swing (95 mph exit velo), and an outfield arm that has climbed from 81 to 88 and now 90 mph across evaluations — the arm strength trend is the most interesting developmental marker. Featured as an April 2026 PBR Massachusetts Uncommitted Spotlight, and remains uncommitted, which itself says the recruiting market views him as a tier below the committed names on this board. Worth a live look on the summer circuit before grading; ISL/NEPSAC competition context matters.",
@@ -568,6 +593,7 @@ const RESEARCH_PATCH = {
     ]
   },
   "William Patrick": {
+    archived:true,
     bats:"R", throws:"R", height:"6-2", weight:"209",
     blurb:"ROSTER FIX: 2025 grad, now an LSU freshman — double-plus runner with plus raw power who barely played in 2026 behind a loaded Tiger outfield. Buy-low 2027 college follow.",
     notes:"ROSTER CORRECTION: not a 2027 HS player. Patrick graduated St. Frederick (Monroe, LA) in 2025, ranked #95 on Baseball America’s final 2025 BA 500, skipped pro ball and enrolled at LSU — so he’s a draft-eligible college outfielder for 2027, not a prep. The tools are loud: BA describes a 6-2, 200-plus-pound righty bat with explosive hands, an uphill path producing loud contact, plus raw power upside, double-plus run times (4th-best sixty at 2024 PG National), and a plus arm with range that fits center field — balanced against real swing-and-miss/chase questions against top travel-circuit arms, which is the whole evaluation. The 2026 freshman year was a redshirt-shaped situation without the redshirt: LSU returned its entire national-championship outfield, Jay Johnson tried him in the infield mid-season to find at-bats, and he barely played — the coaching staff openly discussed how his athleticism fills a need if he cracks the lineup. Monster HS resume (1.406 OPS as a senior, .429/3 HR/29 RBI/15 SB as a junior) but against Louisiana 1A competition, which BA graded 50/Extreme — high ceiling, high variance. 2027 is the prove-it year: if the playing time comes, the tools could move him fast.",
